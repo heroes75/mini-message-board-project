@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/heroes75/mini-message-board-project#readme",
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.2.1"
   }
