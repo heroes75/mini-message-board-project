@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('header') %>
+    <% for(const message of messages)  {%>
+        <p>Send by: <%- message.user %></p>
+        <p>message: <%- message.text %></p>
+        <p>added the: <%- message.added.toISOString().split('T')[0] %> at <%- message.added.getHours()%>:<%-message.added.getMinutes()%></p>
+        <p><a href="/<%- messages.indexOf(message) %>">open</a></p>
+    <%}%>
+</body>
+</html>
