@@ -5,7 +5,7 @@ const path = require('node:path');
 const messageRouter = require('./routes/mesaage-router');
 const app = express();
 
-const PORT = 8080
+const PORT = 8000
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
