@@ -7,10 +7,11 @@
 </head>
 <body>
     <%- include('header') %>
+    <%- include('errors') %>
     <form action="/new" method="post">
         <div class="name-container">
-            <label for="user">Enter your name:</label>
-            <input id="user" name="user" required/>
+            <label for="username">Enter your name:</label>
+            <input id="username" name="username" required/>
         </div>
         <div class="text-container">
             <label for="text">Enter your text:</label>

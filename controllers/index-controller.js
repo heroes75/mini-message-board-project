@@ -1,3 +1,5 @@
+const { getAllMessages } = require("../db/queries");
+
 const messages = [
   {
     text: "Hi there!",
@@ -12,8 +14,9 @@ const messages = [
 ];
 
 
-function indexController(req, res) {
-    res.render('index', {messages: messages, title: 'Mini Messageboard'})
+async function indexController(req, res) {
+  const allMessages = await getAllMessages()
+  res.render('index', {messages: allMessages, title: 'Mini Messageboard'})
 }
 
 module.exports = {indexController, messages}

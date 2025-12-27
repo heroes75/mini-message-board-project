@@ -1,14 +1,29 @@
-const {messages} = require('./index-controller')
+const { body, validationResult, matchedData } = require("express-validator");
+const { addMessage } = require("../db/queries");
 
 function newController(req, res) {
-    res.render('form', {title: 'New'})
+  res.render("form", { title: "New" });
 }
 
-function newPost(req, res) {
-    console.log('req.body:', req.body)
-    const {text, user} = req.body
-    messages.push({text: text, user: user, added: new Date()})
-    res.redirect('/')
+const constraint = [
+  body("username")
+    .isAlphanumeric()
+    .withMessage("username must be alphanumeric"),
+  body("text")
+    .isLength({ max: 150 })
+    .withMessage("your message must not over 150 character"),
+];
+async function newPost(req, res) {
+  const errors = validationResult(req);
+  console.log("errors:", errors);
+  if (!errors.isEmpty()) {
+    res.render('form', {errors: errors.errors, title: "mini message post"})
+    return
+  }
+  console.log("req.body:", req.body);
+  const { text, username } = req.body;
+  await addMessage({ text: text, username: username });
+  res.redirect("/");
 }
 
-module.exports = {newController, newPost}
+module.exports = { newController, newPost, constraint };

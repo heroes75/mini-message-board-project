@@ -1,8 +1,13 @@
+const { getMessageInfo } = require("../db/queries");
 const { messages } = require("./index-controller")
 
-function messageController(req, res) {
-    const {messageId} = req.params
-    res.render('message', {message: messages[messageId]})
+async function messageController(req, res) {
+    console.log('start message controller')
+    const {messageId} = req.params;
+    const message = await getMessageInfo(messageId)
+    console.log('message:', message[0])
+    res.render('message', {message: message[0]})
+    console.log('end message controller')
 }
 
 module.exports = messageController

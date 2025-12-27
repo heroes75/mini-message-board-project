@@ -8,10 +8,10 @@
 <body>
     <%- include('header') %>
     <% for(const message of messages)  {%>
-        <p>Send by: <%- message.user %></p>
+        <p>Send by: <%- message.username %></p>
         <p>message: <%- message.text %></p>
         <p>added the: <%- message.added.toISOString().split('T')[0] %> at <%- message.added.getHours()%>:<%-message.added.getMinutes()%></p>
-        <p><a href="/<%- messages.indexOf(message) %>">open</a></p>
+        <p><a href="/message/<%- message.id %>">open</a></p>
     <%}%>
 </body>
 </html>
