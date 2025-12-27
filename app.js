@@ -6,7 +6,8 @@ const path = require('node:path');
 const messageRouter = require('./routes/message-router');
 const app = express();
 
-const PORT = process.env.NODE_ENV = 'local' ? process.env.LOCAL_PORT ? process.env.PROD_PORT
+const PORT = process.env.NODE_ENV === 'local' ? process.env.LOCAL_PORT : process.env.PROD_PORT;
+console.log('PORT:', PORT)
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
